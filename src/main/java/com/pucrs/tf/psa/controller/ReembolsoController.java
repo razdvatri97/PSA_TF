@@ -5,15 +5,14 @@ import com.pucrs.tf.psa.repository.ReembolsoRepositorio;
 import com.pucrs.tf.psa.service.ReembolsoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -35,13 +34,13 @@ public class ReembolsoController {
             Reembolso reembolso = reembolsoService.criaReembolso(nome, valor);
             return ResponseEntity.ok(reembolso);
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Nome e/ou valor estão incorretos.");
+        return ResponseEntity.status(BAD_REQUEST).body("Nome e/ou valor estão incorretos.");
     }
 
 
     @RequestMapping(value = "listarTodosReembolsos", method = GET)
     public ResponseEntity<Optional<?>> listarTodosReembolsos() {
-        return ResponseEntity.status(HttpStatus.OK).body(Optional.of(repositorio.findAll()));
+        return ResponseEntity.status(OK).body(Optional.of(repositorio.findAll()));
     }
 
 
@@ -50,15 +49,15 @@ public class ReembolsoController {
         Optional<Reembolso> reembolsoOptional = repositorio.findById(id);
         if (reembolsoOptional.isPresent()) {
             Reembolso reembolsoAprovado = reembolsoService.aprovarReembolso(reembolsoOptional.get());
-            return ResponseEntity.status(HttpStatus.OK).body(reembolsoAprovado);
+            return ResponseEntity.status(OK).body(reembolsoAprovado);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Reembolso não encontrado.");
+            return ResponseEntity.status(NOT_FOUND).body("Reembolso não encontrado.");
         }
     }
 
     @RequestMapping(value = "gerarRelatorio/", method = GET)
     public ResponseEntity<Optional<?>> gerarRelatorio() {
-        return ResponseEntity.status(HttpStatus.OK).body(Optional.of(reembolsoService.gerarRelatorio()));
+        return ResponseEntity.status(OK).body(Optional.of(reembolsoService.gerarRelatorio()));
     }
 }
 
