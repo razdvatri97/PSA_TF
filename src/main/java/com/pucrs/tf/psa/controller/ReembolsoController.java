@@ -47,8 +47,9 @@ public class ReembolsoController {
         return ResponseEntity.status(HttpStatus.OK).body(Optional.of(reembolsoService.aprovarReembolso(id)));
     }
 
-    
-
-
+    @RequestMapping(value = "gerarRelatorio/", method = GET)
+    public ResponseEntity<Optional<?>> gerarRelatorio() {
+        return ResponseEntity.status(HttpStatus.OK).body(Optional.of(reembolsoService.gerarRelatorio()));
+    }
 }
 

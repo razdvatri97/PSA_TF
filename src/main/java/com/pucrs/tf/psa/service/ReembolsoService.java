@@ -5,6 +5,7 @@ import com.pucrs.tf.psa.repository.ReembolsoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -37,5 +38,9 @@ public class ReembolsoService {
 
         return Optional.of(reembolsoAprovado);
 
+    }
+
+    public Optional<List<Reembolso>> gerarRelatorio() {
+        return Optional.of(repositorio.findAllAprovados());
     }
 }
