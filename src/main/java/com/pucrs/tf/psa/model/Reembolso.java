@@ -13,6 +13,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
+@Getter
 public class Reembolso {
 
     @Id

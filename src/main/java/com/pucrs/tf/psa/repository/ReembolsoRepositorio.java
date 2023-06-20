@@ -9,10 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ReembolsoRepositorio extends JpaRepository<Reembolso, Long> {
-    String findNomeById(Long id);
-
-    double findValorById(Long id);
-
     @Query("SELECT r FROM Reembolso r WHERE r.aprovado = true")
     List<Reembolso> findAllAprovados();
 }
