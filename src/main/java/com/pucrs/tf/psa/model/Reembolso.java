@@ -1,4 +1,4 @@
-package model;
+package com.pucrs.tf.psa.model;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Data
+
 @Entity
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -18,5 +18,6 @@ public class Reembolso {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    String nome;
     double valor;
 }
