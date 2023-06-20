@@ -10,8 +10,9 @@ import javax.persistence.Id;
 
 @Entity
 @Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 @NoArgsConstructor
+@Setter
 public class Reembolso {
 
     @Id
@@ -20,4 +21,5 @@ public class Reembolso {
 
     String nome;
     double valor;
+    boolean aprovado;
 }
