@@ -8,7 +8,7 @@ Documentação do projeto com uma explicação de cada classe e interface, infor
 ## Versões utilizadas
 - Spring Boot: 2.5.2
 - Springfox: 3.0.0
-- Banco de dados H2: versão específica não informada
+- Banco de dados H2: 1.4.199
 - JDK: 17
 
 
